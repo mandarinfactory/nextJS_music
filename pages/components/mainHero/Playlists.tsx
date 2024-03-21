@@ -38,6 +38,8 @@ const Playlists: React.FC = () => {
               <div className="w-[80%] sm:flex sm:justify-start cursor-pointer">
                 <Image
                   src={`${v.images[0].url}`}
+                  width={100}
+                  height={100}
                   alt="playlists"
                   className="sm:w-[35%] my-1 sm:mr-1 rounded-lg object-cover hover:scale-105 duration-300 shadow-xl"
                 />

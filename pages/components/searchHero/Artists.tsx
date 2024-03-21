@@ -34,6 +34,8 @@ const Artists: React.FC = () => {
           >
             <Image
               src={`${artistData?.artists.items[0].images[2].url}`}
+              width={100}
+              height={100}
               alt="artist"
               className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
             />

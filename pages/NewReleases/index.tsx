@@ -12,7 +12,9 @@ import { NewReleasesDataType } from "@/types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
-  const newReleasesData = useRecoilValue(searchBrowseState(25)) as NewReleasesDataType;
+  const newReleasesData = useRecoilValue(
+    searchBrowseState(25)
+  ) as NewReleasesDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
 
@@ -33,6 +35,8 @@ const NewReleases = () => {
             >
               <Image
                 className="w-[70%] rounded-xl hover:scale-95 duration-150"
+                width={100}
+                height={100}
                 src={`${v.images[0].url}`}
                 alt="앨범아트"
               />

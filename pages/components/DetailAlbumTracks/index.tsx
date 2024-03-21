@@ -70,6 +70,8 @@ const DetailAlbumTracks: React.FC = () => {
                   <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={`${albumData.images[1].url}`}
+                    width={100}
+                    height={100}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

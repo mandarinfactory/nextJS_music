@@ -30,6 +30,8 @@ const RandomArtists: React.FC = () => {
               <Image
                 className="sm:w-[25%] object-cover rounded-xl shadow-xl"
                 src={`${e.images[0]?.url}`}
+                width={100}
+                height={100}
                 alt="아티스트"
               />
               <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-xs">

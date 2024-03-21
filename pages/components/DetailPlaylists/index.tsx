@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
 import Image from "next/image";
+import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
@@ -23,11 +23,11 @@ const DetailPlaylists: React.FC = () => {
   ) as ClickedDetailInfos;
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
-  ) as DetailTrackData
+  ) as DetailTrackData;
   console.log(detailTracksData);
-  
+
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
-  const savedAuthToken:string = useRecoilValue(authenticationTokenState);
+  const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
   useEffect(() => {
     if (selectedVal) {
@@ -45,6 +45,8 @@ const DetailPlaylists: React.FC = () => {
                 className="rounded-2xl shadow-xl"
                 src={`${clickedDetailInfos.images[0].url}`}
                 alt=""
+                width={100}
+                height={100}
               />
             </div>
             <div className="ml-5 flex flex-col justify-end items-start overflow-hidden">
@@ -76,6 +78,8 @@ const DetailPlaylists: React.FC = () => {
                   <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={`${value.track.album.images[1].url}`}
+                    width={100}
+                    height={100}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
