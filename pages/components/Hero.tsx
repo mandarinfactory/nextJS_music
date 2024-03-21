@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
     if (getSaveAccessToken) {
       setAccessToken(getSaveAccessToken);
     }
-  }, []);
+  }, [setAccessToken]);
 
   return <>{!musicVal ? <MainHero /> : <SearchHero />}</>;
 };

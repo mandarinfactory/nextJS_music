@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -47,8 +48,8 @@ const Songs: React.FC = () => {
                         savedAuthToken ? <></> : alert("로그인 후 재생해주시기 바랍니다!")
                       }}
                     >
-                      <img
-                        src={v.album.images[1].url}
+                      <Image
+                        src={`${v.album.images[1].url}`}
                         alt="앨범아트"
                         className="w-[40%] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />

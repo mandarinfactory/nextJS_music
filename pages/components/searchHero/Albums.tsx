@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ItemsCarousel from "react-items-carousel";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -70,8 +71,8 @@ const Albums = () => {
                       setClickedAlbum(v);
                     }}
                   >
-                    <img
-                      src={v.images[1].url}
+                    <Image
+                      src={`${v.images[1].url}`}
                       alt="앨범아트"
                       className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                     />

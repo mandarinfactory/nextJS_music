@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
@@ -31,8 +32,8 @@ const Artists: React.FC = () => {
               setDetailInfos(filteredArtistData);
             }}
           >
-            <img
-              src={artistData?.artists.items[0].images[2].url}
+            <Image
+              src={`${artistData?.artists.items[0].images[2].url}`}
               alt="artist"
               className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
             />

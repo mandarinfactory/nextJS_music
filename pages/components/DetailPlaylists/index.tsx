@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import {
@@ -32,7 +33,7 @@ const DetailPlaylists: React.FC = () => {
     if (selectedVal) {
       detailTracksData;
     }
-  }, [isClicked, selectedVal]);
+  }, [isClicked, selectedVal, detailTracksData]);
 
   return (
     <div className="w-full h-full flex flex-col justify-center">
@@ -40,9 +41,9 @@ const DetailPlaylists: React.FC = () => {
         <Sidebar>
           <div className="w-auto flex mb-5">
             <div className="w-auto h-auto">
-              <img
+              <Image
                 className="rounded-2xl shadow-xl"
-                src={clickedDetailInfos.images[0].url}
+                src={`${clickedDetailInfos.images[0].url}`}
                 alt=""
               />
             </div>
@@ -72,9 +73,9 @@ const DetailPlaylists: React.FC = () => {
                     );
                   }}
                 >
-                  <img
+                  <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
-                    src={value.track.album.images[1].url}
+                    src={`${value.track.album.images[1].url}`}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

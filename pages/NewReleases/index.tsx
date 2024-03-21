@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -30,9 +31,9 @@ const NewReleases = () => {
                 setClickedAlbum(v);
               }}
             >
-              <img
-                className=" w-[70%] rounded-xl hover:scale-95 duration-150"
-                src={v.images[0].url}
+              <Image
+                className="w-[70%] rounded-xl hover:scale-95 duration-150"
+                src={`${v.images[0].url}`}
                 alt="앨범아트"
               />
               <div className="mt-1 text-lg flex flex-col justify-start">

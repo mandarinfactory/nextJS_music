@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { randomArtistsHandler } from "@/recoil/selector/selectors";
@@ -26,9 +27,9 @@ const RandomArtists: React.FC = () => {
             }}
           >
             <div className="w-full relative sm:flex sm:justify-start hover:scale-95 duration-150 cursor-pointer">
-              <img
+              <Image
                 className="sm:w-[25%] object-cover rounded-xl shadow-xl"
-                src={e.images[0]?.url}
+                src={`${e.images[0]?.url}`}
                 alt="아티스트"
               />
               <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-xs">
