@@ -12,7 +12,9 @@ import { AlbumDataType } from "@/types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);
-  const albumData = useRecoilValue(searchAlbumFinderState(musicVal)) as AlbumDataType[];
+  const albumData = useRecoilValue(
+    searchAlbumFinderState(musicVal)
+  ) as AlbumDataType[];
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const CHEVRONWIDTH = 50;
