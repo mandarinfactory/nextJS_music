@@ -32,14 +32,8 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
       {
         icon: HiHome,
         label: "홈",
-        active: pathname !== "/NewReleases",
+        active: pathname !== "/something",
         href: "/.",
-      },
-      {
-        icon: WiStars,
-        label: "최신앨범",
-        active: pathname === "/NewReleases",
-        href: "/NewReleases",
       },
     ],
     [pathname]
