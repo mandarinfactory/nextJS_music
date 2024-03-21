@@ -50,14 +50,16 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
     if (typeof savedLocalAuthToken === "string") {
       setSavedAuthToken(savedLocalAuthToken);
     }
-  }, [setSavedAuthToken]);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (removeAuth) {
       localStorage.removeItem("authToken");
       setSavedAuthToken(null);
     }
-  }, [removeAuth, setSavedAuthToken]);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [removeAuth]);
 
   return (
     <div className="flex sm:flex-col">
