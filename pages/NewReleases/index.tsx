@@ -35,8 +35,8 @@ const NewReleases = () => {
             >
               <Image
                 className="w-[70%] rounded-xl hover:scale-95 duration-150"
-                width={100}
-                height={100}
+                width={500}
+                height={500}
                 src={`${v.images[0].url}`}
                 alt="앨범아트"
               />

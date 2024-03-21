@@ -24,8 +24,6 @@ const DetailPlaylists: React.FC = () => {
   const detailTracksData = useRecoilValue(
     detailTrackHandlerState(selectedVal || "")
   ) as DetailTrackData;
-  console.log(detailTracksData);
-
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
   const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
@@ -45,8 +43,8 @@ const DetailPlaylists: React.FC = () => {
                 className="rounded-2xl shadow-xl"
                 src={`${clickedDetailInfos.images[0].url}`}
                 alt=""
-                width={100}
-                height={100}
+                width={300}
+                height={300}
               />
             </div>
             <div className="ml-5 flex flex-col justify-end items-start overflow-hidden">

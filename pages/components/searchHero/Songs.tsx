@@ -60,8 +60,8 @@ const Songs: React.FC = () => {
                     >
                       <Image
                         src={`${v.album.images[1].url}`}
-                        width={100}
-                        height={100}
+                        width={300}
+                        height={300}
                         alt="앨범아트"
                         className="w-[40%] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />

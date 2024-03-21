@@ -38,8 +38,8 @@ const DetailTracks: React.FC = () => {
                 className="w-[30%] h-auto rounded-xl object-cover shadow-xl"
                 src={`${detailInfosData?.images[0].url}`}
                 alt=""
-                width={100}
-                height={100}
+                width={500}
+                height={500}
               />
               <div className="flex flex-col justify-between">
                 <h1 className="ml-5 lg:text-[4rem] md:text-4xl sm:text-3xl">
@@ -87,8 +87,8 @@ const DetailTracks: React.FC = () => {
                   <Image
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={v.album.images[1].url}
-                    width={100}
-                    height={100}
+                    width={200}
+                    height={200}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

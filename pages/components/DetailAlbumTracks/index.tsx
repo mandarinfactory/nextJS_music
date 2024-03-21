@@ -32,6 +32,8 @@ const DetailAlbumTracks: React.FC = () => {
               <Image
                 className="w-[400px] h-auto rounded-xl shadow-lg"
                 src={`${albumData.images[0].url}`}
+                width={500}
+                height={500}
                 alt=""
               />
               <div className="flex flex-col justify-end ml-3 text-3xl">

@@ -75,8 +75,8 @@ const Albums = () => {
                   >
                     <Image
                       src={`${v.images[1].url}`}
-                      width={100}
-                      height={100}
+                      width={500}
+                      height={500}
                       alt="앨범아트"
                       className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
                     />
