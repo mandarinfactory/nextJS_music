@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
-import Sidebar from "../Sidebar";
-import { detailTrackState, isClickedState } from "../../recoil/atom";
-import { searchBrowseState } from "../../recoil/selector/searchSelectors";
-import { NewReleasesDataType } from "../../types/AlbumTypes";
+import Sidebar from "../components/Sidebar";
+import { detailTrackState, isClickedState } from "../recoil/atom";
+import { searchBrowseState } from "../recoil/selector/searchSelectors";
+import { NewReleasesDataType } from "../types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
@@ -35,9 +36,11 @@ const NewReleases = () => {
                 setClickedAlbum(v);
               }}
             >
-              <img
+              <Image
                 className=" w-[70%] rounded-xl hover:scale-95 duration-150"
-                src={v.images[0].url}
+                src={`${v.images[0].url}`}
+                width={500}
+                height={500}
                 alt="앨범아트"
               />
               <div className="mt-1 text-lg flex flex-col justify-start">

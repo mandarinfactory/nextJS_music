@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
   useRecoilValue,
@@ -66,8 +67,10 @@ const Songs: React.FC = () => {
                         );
                       }}
                     >
-                      <img
-                        src={v.album.images[1].url}
+                      <Image
+                        src={`${v.album.images[1].url}`}
+                        width={500}
+                        height={500}
                         alt="앨범아트"
                         className="w-[40%] h-auto rounded-md hover:scale-105 duration-200 shadow-lg"
                       />

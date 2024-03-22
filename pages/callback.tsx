@@ -12,7 +12,7 @@ const Callback = ({ accessToken }: { accessToken: string }) => {
     if (accessToken) {
       localStorage.setItem("authToken", accessToken);
     }
-  }, []);
+  }, [accessToken]);
 
   return (
     <RecoilRootBox>
