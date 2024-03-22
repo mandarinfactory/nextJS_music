@@ -2,7 +2,7 @@
 
 import React, { Suspense } from "react";
 import { RecoilRoot, RecoilRootProps } from "recoil";
-import SuspenseBox from "./SuspenseBox";
+import SuspenseBox from "../components/Box/SuspenseBox";
 
 export const RecoilRootBox: React.FC<RecoilRootProps> = ({ children }) => {
   return (
