@@ -1,18 +1,22 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
-import { searchBrowseState } from "@/recoil/selector/searchSelectors";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 import {
   isClickedState,
   selectedMusicValState,
   detailClickedPlaylistsInfoState,
-} from "@/recoil/atom";
-import { PlaylistsDataType } from "@/types/AlbumTypes";
+} from "../../recoil/atom";
+import { PlaylistsDataType } from "../../types/AlbumTypes";
 
 const Playlists: React.FC = () => {
-  const playlistsData = useRecoilValue(searchBrowseState(10)) as PlaylistsDataType
+  const playlistsLoadable = useRecoilValueLoadable(searchBrowseState(10));
+  const playlistsData = (
+    playlistsLoadable.state === "hasValue" && playlistsLoadable.contents
+      ? playlistsLoadable.contents
+      : undefined
+  ) as PlaylistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
   const setClickedDetailInfos = useSetRecoilState(
@@ -36,10 +40,8 @@ const Playlists: React.FC = () => {
               }}
             >
               <div className="w-[80%] sm:flex sm:justify-start cursor-pointer">
-                <Image
-                  src={`${v.images[0].url}`}
-                  width={200}
-                  height={200}
+                <img
+                  src={v.images[0].url}
                   alt="playlists"
                   className="sm:w-[35%] my-1 sm:mr-1 rounded-lg object-cover hover:scale-105 duration-300 shadow-xl"
                 />

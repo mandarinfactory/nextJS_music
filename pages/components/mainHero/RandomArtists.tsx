@@ -1,14 +1,24 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
-import { randomArtistsHandler } from "@/recoil/selector/selectors";
-import { isClickedState, detailClickedInfosState } from "@/recoil/atom";
-import { ArtistsDataType } from "@/types/AlbumTypes";
+import { ArtistsDataType } from "../../types/AlbumTypes";
+import { randomArtistsHandler } from "../../recoil/selector/selectors";
+import { isClickedState, detailClickedInfosState } from "../../recoil/atom";
 
 const RandomArtists: React.FC = () => {
-  const randomArtistsData = useRecoilValue(randomArtistsHandler("")) as ArtistsDataType;
+  const randomArtistsLoadable = useRecoilValueLoadable(
+    randomArtistsHandler("")
+  );
+  const randomArtistsData = (
+    randomArtistsLoadable.state === "hasValue" && randomArtistsLoadable.contents
+      ? randomArtistsLoadable.contents
+      : undefined
+  ) as ArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
 
@@ -27,11 +37,9 @@ const RandomArtists: React.FC = () => {
             }}
           >
             <div className="w-full relative sm:flex sm:justify-start hover:scale-95 duration-150 cursor-pointer">
-              <Image
+              <img
                 className="sm:w-[25%] object-cover rounded-xl shadow-xl"
-                src={`${e.images[0]?.url}`}
-                width={200}
-                height={200}
+                src={e.images[0]?.url}
                 alt="아티스트"
               />
               <h1 className="absolute sm:relative top-1 left-1 text-white mix-blend-difference sm:mix-blend-normal mt-2 drop-shadow-2xl uppercase text-lg sm:text-xs">

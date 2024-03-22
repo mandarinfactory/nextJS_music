@@ -1,21 +1,24 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "@/recoil/selector/searchSelectors";
+} from "../../recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import {
   detailClickedInfosState,
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "@/recoil/atom";
-import { DetailInfosDataType } from "@/types/AlbumTypes";
+} from "../../recoil/atom";
+import { DetailInfosDataType } from "../../types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);
@@ -23,8 +26,21 @@ const DetailTracks: React.FC = () => {
     detailClickedInfosState
   ) as DetailInfosDataType & React.ReactNode;
   const artistData = detailInfosData.name;
-  const detailSongsData = useRecoilValue(searchSongFinderState(artistData));
-  const detailDescData = useRecoilValue(searchDescriptionState(artistData));
+  const detailSongsLoadable = useRecoilValueLoadable(
+    searchSongFinderState(artistData)
+  );
+  const detailSongsData =
+    detailSongsLoadable.state === "hasValue" && detailSongsLoadable.contents
+      ? detailSongsLoadable.contents
+      : undefined;
+
+  const detailDescLoadable = useRecoilValueLoadable(
+    searchDescriptionState(artistData)
+  );
+  const detailDescData =
+    detailDescLoadable.state === "hasValue" && detailDescLoadable.contents
+      ? detailDescLoadable.contents
+      : undefined;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
   const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
@@ -34,12 +50,10 @@ const DetailTracks: React.FC = () => {
         {isDetailClicked ? (
           <div className="w-[95%] h-max-screen">
             <div className="w-full h-auto flex">
-              <Image
+              <img
                 className="w-[30%] h-auto rounded-xl object-cover shadow-xl"
-                src={`${detailInfosData?.images[0].url}`}
+                src={detailInfosData?.images[0].url}
                 alt=""
-                width={500}
-                height={500}
               />
               <div className="flex flex-col justify-between">
                 <h1 className="ml-5 lg:text-[4rem] md:text-4xl sm:text-3xl">
@@ -84,11 +98,9 @@ const DetailTracks: React.FC = () => {
                     );
                   }}
                 >
-                  <Image
+                  <img
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
                     src={v.album.images[1].url}
-                    width={200}
-                    height={200}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">

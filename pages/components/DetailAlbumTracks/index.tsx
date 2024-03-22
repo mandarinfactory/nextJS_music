@@ -1,8 +1,11 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from "recoil";
 
 import Sidebar from "../Sidebar";
 import {
@@ -10,30 +13,37 @@ import {
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "@/recoil/atom";
-import { searchDetailTrackState } from "@/recoil/selector/searchSelectors";
-import { AlbumDataType, DetailAlbumTrackDataType } from "@/types/AlbumTypes";
+} from "../../recoil/atom";
+import { searchDetailTrackState } from "../../recoil/selector/searchSelectors";
+import {
+  AlbumDataType,
+  DetailAlbumTrackDataType,
+} from "../../types/AlbumTypes";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);
   const albumData = useRecoilValue(detailTrackState) as AlbumDataType;
-  const detailAlbumTrackData = useRecoilValue(
+  const detailAlbumTrackLoadable = useRecoilValueLoadable(
     searchDetailTrackState(albumData.id)
+  );
+  const detailAlbumTrackData = (
+    detailAlbumTrackLoadable.state === "hasValue" &&
+    detailAlbumTrackLoadable.contents
+      ? detailAlbumTrackLoadable.contents
+      : undefined
   ) as DetailAlbumTrackDataType;
   const setConfirmedURI = useSetRecoilState(confirmedURIState);
   const savedAuthToken: string = useRecoilValue(authenticationTokenState);
 
   return (
     <Sidebar>
-      {isClicked ? (
+      {isClicked && detailAlbumTrackData ? (
         <div className="w-full h-full flex justify-center">
           <div className="w-[95%] h-max-screen">
             <div className="flex">
-              <Image
+              <img
                 className="w-[400px] h-auto rounded-xl shadow-lg"
-                src={`${albumData.images[0].url}`}
-                width={500}
-                height={500}
+                src={albumData.images[0].url}
                 alt=""
               />
               <div className="flex flex-col justify-end ml-3 text-3xl">
@@ -69,11 +79,9 @@ const DetailAlbumTracks: React.FC = () => {
                     );
                   }}
                 >
-                  <Image
+                  <img
                     className="w-[60px] h-auto ml-3 object-cover rounded-md"
-                    src={`${albumData.images[1].url}`}
-                    width={100}
-                    height={100}
+                    src={albumData.images[1].url}
                     alt=""
                   />
                   <div className="w-[80%] h-auto mx-auto ml-1 flex justify-between items-center truncate">
