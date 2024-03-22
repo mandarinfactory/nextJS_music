@@ -10,8 +10,8 @@ import {
   authenticationTokenState,
   confirmedURIState,
   musicValState,
-} from "../../recoil/atom";
-import { searchSongFinderState } from "../../recoil/selector/searchSelectors";
+} from "../../../recoil/atom";
+import { searchSongFinderState } from "../../../recoil/selector/searchSelectors";
 import { SongDataType } from "../../types/AlbumTypes";
 
 const Songs: React.FC = () => {

@@ -6,7 +6,7 @@ import { SetterOrUpdater, useRecoilValue, useSetRecoilState } from "recoil";
 import { getAccessTokenData } from "../api/token";
 import MainHero from "./MainHero";
 import SearchHero from "./SearchHero";
-import { accessTokenState, musicValState } from "../recoil/atom";
+import { accessTokenState, musicValState } from "../../recoil/atom";
 
 const Hero: React.FC = () => {
   const setAccessToken:SetterOrUpdater<string> = useSetRecoilState(accessTokenState);

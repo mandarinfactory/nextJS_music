@@ -14,8 +14,8 @@ import {
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "../../recoil/atom";
-import { searchDetailTrackState } from "../../recoil/selector/searchSelectors";
+} from "../../../recoil/atom";
+import { searchDetailTrackState } from "../../../recoil/selector/searchSelectors";
 import {
   AlbumDataType,
   DetailAlbumTrackDataType,

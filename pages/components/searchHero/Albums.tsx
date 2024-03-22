@@ -11,10 +11,10 @@ import {
   detailTrackState,
   isClickedState,
   musicValState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
-import { searchAlbumFinderState } from "../../recoil/selector/searchSelectors";
+import { searchAlbumFinderState } from "../../../recoil/selector/searchSelectors";
 import Link from "next/link";
 import { AlbumDataType } from "../../types/AlbumTypes";
 

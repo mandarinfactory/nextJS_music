@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
-import { searchBrowseState } from "../../recoil/selector/searchSelectors";
+import { searchBrowseState } from "../../../recoil/selector/searchSelectors";
 import {
   isClickedState,
   selectedMusicValState,
   detailClickedPlaylistsInfoState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import { PlaylistsDataType } from "../../types/AlbumTypes";
 
 const Playlists: React.FC = () => {

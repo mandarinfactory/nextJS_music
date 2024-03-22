@@ -15,7 +15,7 @@ import {
   confirmedURIState,
   isClickedState,
   musicValState,
-} from "../recoil/atom";
+} from "../../recoil/atom";
 
 const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
   const router = useRouter();

@@ -7,9 +7,9 @@ import {
   detailClickedInfosState,
   isClickedState,
   musicValState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import { ArtistsDataType } from "../../types/AlbumTypes";
-import { searchArtistFinderState } from "../../recoil/selector/searchSelectors";
+import { searchArtistFinderState } from "../../../recoil/selector/searchSelectors";
 
 const Artists: React.FC = () => {
   const setIsClicked = useSetRecoilState(isClickedState);
