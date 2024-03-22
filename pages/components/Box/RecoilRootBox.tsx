@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { RecoilRoot, RecoilRootProps } from "recoil";
-import { Suspense } from "react";
-import SuspenseBox from "../components/box/SuspenseBox";
+import SuspenseBox from "./SuspenseBox";
 
 export const RecoilRootBox: React.FC<RecoilRootProps> = ({ children }) => {
   return (
