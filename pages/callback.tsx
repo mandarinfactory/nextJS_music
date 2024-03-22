@@ -4,8 +4,8 @@ import { GetServerSideProps } from "next";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
-import { RecoilRootBox } from "./utils/RecoilRootBox";
-import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URL } from "./utils/constants";
+import { RecoilRootBox } from "../utils/RecoilRootBox";
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URL } from "../utils/constants";
 
 const Callback = ({ accessToken }: { accessToken: string }) => {
   useEffect(() => {

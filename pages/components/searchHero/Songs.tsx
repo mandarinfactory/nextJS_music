@@ -12,7 +12,7 @@ import {
   musicValState,
 } from "../../../recoil/atom";
 import { searchSongFinderState } from "../../../recoil/selector/searchSelectors";
-import { SongDataType } from "../../types/AlbumTypes";
+import { SongDataType } from "../../../types/AlbumTypes";
 
 const Songs: React.FC = () => {
   const musicVal = useRecoilValue(musicValState);

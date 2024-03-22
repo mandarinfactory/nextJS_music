@@ -10,10 +10,10 @@ import {
   detailClickedPlaylistsInfoState,
   isClickedState,
   selectedMusicValState,
-} from "../../recoil/atom";
+} from "../../../recoil/atom";
 import Sidebar from "../Sidebar";
-import { detailTrackHandlerState } from "../../recoil/selector/selectors";
-import { ClickedDetailInfos, DetailTrackDataType } from "../../types/AlbumTypes";
+import { detailTrackHandlerState } from "../../../recoil/selector/selectors";
+import { ClickedDetailInfos, DetailTrackDataType } from "../../../types/AlbumTypes";
 
 const DetailPlaylists: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);

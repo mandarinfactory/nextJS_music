@@ -8,7 +8,7 @@ import {
   isClickedState,
   musicValState,
 } from "../../../recoil/atom";
-import { ArtistsDataType } from "../../types/AlbumTypes";
+import { ArtistsDataType } from "../../../types/AlbumTypes";
 import { searchArtistFinderState } from "../../../recoil/selector/searchSelectors";
 
 const Artists: React.FC = () => {

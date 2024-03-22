@@ -16,7 +16,7 @@ import LeftChevron from "../button/LeftChevron";
 import RightChevron from "../button/RightChevron";
 import { searchAlbumFinderState } from "../../../recoil/selector/searchSelectors";
 import Link from "next/link";
-import { AlbumDataType } from "../../types/AlbumTypes";
+import { AlbumDataType } from "../../../types/AlbumTypes";
 
 const Albums = () => {
   const musicVal = useRecoilValue(musicValState);

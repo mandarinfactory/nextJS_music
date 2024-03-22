@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
-import { ArtistsDataType } from "../../types/AlbumTypes";
+import { ArtistsDataType } from "../../../types/AlbumTypes";
 import { randomArtistsHandler } from "../../../recoil/selector/selectors";
 import { isClickedState, detailClickedInfosState } from "../../../recoil/atom";
 

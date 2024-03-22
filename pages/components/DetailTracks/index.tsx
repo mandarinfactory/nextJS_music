@@ -11,15 +11,15 @@ import {
 import {
   searchDescriptionState,
   searchSongFinderState,
-} from "../../recoil/selector/searchSelectors";
+} from "../../../recoil/selector/searchSelectors";
 import Sidebar from "../Sidebar";
 import {
   detailClickedInfosState,
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
-} from "../../recoil/atom";
-import { DetailInfosDataType } from "../../types/AlbumTypes";
+} from "../../../recoil/atom";
+import { DetailInfosDataType } from "../../../types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
   const isDetailClicked = useRecoilValue(isClickedState);

@@ -19,7 +19,7 @@ import { searchDetailTrackState } from "../../../recoil/selector/searchSelectors
 import {
   AlbumDataType,
   DetailAlbumTrackDataType,
-} from "../../types/AlbumTypes";
+} from "../../../types/AlbumTypes";
 
 const DetailAlbumTracks: React.FC = () => {
   const isClicked = useRecoilValue(isClickedState);

@@ -9,7 +9,7 @@ import {
   selectedMusicValState,
   detailClickedPlaylistsInfoState,
 } from "../../../recoil/atom";
-import { PlaylistsDataType } from "../../types/AlbumTypes";
+import { PlaylistsDataType } from "../../../types/AlbumTypes";
 
 const Playlists: React.FC = () => {
   const playlistsLoadable = useRecoilValueLoadable(searchBrowseState(10));

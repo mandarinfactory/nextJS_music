@@ -8,7 +8,7 @@ import SpotifyPlayer from "react-spotify-web-playback";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 import Title from "./Title";
-import { SidebarProps } from "../types/types";
+import { SidebarProps } from "../../types/types";
 import SidebarItem from "./SidebarItem";
 import {
   authenticationTokenState,

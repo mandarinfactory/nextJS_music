@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import Sidebar from "../components/Sidebar";
-import { detailTrackState, isClickedState } from "../recoil/atom";
-import { searchBrowseState } from "../recoil/selector/searchSelectors";
-import { NewReleasesDataType } from "../types/AlbumTypes";
+import { detailTrackState, isClickedState } from "../..//recoil/atom";
+import { searchBrowseState } from "../../recoil/selector/searchSelectors";
+import { NewReleasesDataType } from "../../types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
