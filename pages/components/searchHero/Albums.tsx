@@ -60,6 +60,12 @@ const Albums = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!albumData || albumDataLoadable.state !== "hasValue") {
+      albumDataLoadable
+    }
+  },[albumData])
+
   return (
     <>
       <h1 className="w-full h-auto text-3xl sm:text-center">앨범</h1>

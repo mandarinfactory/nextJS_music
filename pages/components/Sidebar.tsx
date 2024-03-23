@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
   const pathname = usePathname();
   const [removeAuth, setRemoveAuth] = useState(false);
   const confirmedURI = useRecoilValue(confirmedURIState);
-  const setMusicVal = useSetRecoilState(musicValState);
+  const [musicVal, setMusicVal] = useRecoilState(musicValState);
   const setIsClicked = useSetRecoilState(isClickedState);
   const [savedAuthToken, setSavedAuthToken] = useRecoilState<string | null>(
     authenticationTokenState
@@ -88,7 +88,11 @@ const Sidebar: React.FC<SidebarProps> = ({ spotifyAuthUrl, children }) => {
               <a
                 href={spotifyAuthUrl}
                 onClick={() => {
-                  router.back();
+                  if (pathname !== "/" || musicVal !== "") {
+                    alert("홈 화면에서 로그인 부탁드립니다!")
+                    setMusicVal("")
+                    router.back();
+                  }
                 }}
               >
                 로그인

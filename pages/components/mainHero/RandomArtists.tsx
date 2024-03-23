@@ -18,7 +18,8 @@ const RandomArtists: React.FC = () => {
   ) as ArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
-
+  
+  
   useEffect(() => {
     if (!randomArtistsData || randomArtistsLoadable.state !== "hasValue") {
       randomArtistsLoadable;
