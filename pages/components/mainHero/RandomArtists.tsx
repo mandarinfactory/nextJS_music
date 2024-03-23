@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
@@ -18,6 +18,12 @@ const RandomArtists: React.FC = () => {
   ) as ArtistsDataType;
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
+
+  useEffect(() => {
+    if (!randomArtistsData || randomArtistsLoadable.state !== "hasValue") {
+      randomArtistsLoadable;
+    }
+  }, [randomArtistsData]);
 
   return (
     <>
@@ -54,7 +60,7 @@ const RandomArtists: React.FC = () => {
           </div>
         </div>
       ) : (
-        <></>
+        randomArtistsLoadable
       )}
     </>
   );
