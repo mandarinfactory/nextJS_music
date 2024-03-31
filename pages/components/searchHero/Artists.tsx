@@ -23,11 +23,13 @@ const Artists: React.FC = () => {
       : undefined
   ) as ArtistsDataType;
 
+  
+
   return (
     <div className="w-full h-full">
       <h1 className="w-full h-auto text-3xl sm:text-center">아티스트</h1>
       <div className="w-full flex justify-start sm:justify-center mt-5">
-        {artistData ? (
+        {artistData?.artists.items.length ? (
           <Link
             href="components/DetailTracks"
             onClick={() => {
@@ -37,14 +39,14 @@ const Artists: React.FC = () => {
             }}
           >
             <Image
-              src={`${artistData?.artists.items[0].images[2].url}`}
+              src={`${artistData.artists.items.length ? artistData.artists.items[0].images[1].url : ""}`}
               width={200}
               height={200}
               alt="artist"
               className="rounded-full shadow-xl hover:scale-105 duration-300 cursor-pointer"
             />
             <h1 className="mt-3 text-xl text-center">
-              {artistData?.artists.items[0].name}
+              {artistData?.artists.items[0]?.name}
             </h1>
           </Link>
         ) : (
