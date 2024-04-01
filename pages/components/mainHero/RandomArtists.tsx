@@ -6,6 +6,7 @@ import { useRecoilValueLoadable, useSetRecoilState, useRecoilValue } from "recoi
 import { ArtistsDataType } from "../../../types/AlbumTypes";
 import { randomArtistsHandler } from "../../../recoil/selector/selectors";
 import { isClickedState, detailClickedInfosState, accessTokenState } from "../../../recoil/atom";
+import { getAccessTokenData } from "../../api/token";
 
 const RandomArtists: React.FC = () => {
   const accessToken:string = useRecoilValue(accessTokenState);
@@ -23,7 +24,8 @@ const RandomArtists: React.FC = () => {
   
   
   useEffect(() => {
-    if (!randomArtistsData || randomArtistsLoadable.state !== "hasValue") {
+    if (!randomArtistsData || randomArtistsLoadable.state !== "hasValue" || accessToken) {
+      getAccessTokenData();
       randomArtistsLoadable;
     }
   }, [randomArtistsData]);

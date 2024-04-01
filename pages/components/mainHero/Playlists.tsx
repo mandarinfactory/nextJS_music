@@ -11,6 +11,7 @@ import {
   accessTokenState,
 } from "../../../recoil/atom";
 import { PlaylistsDataType } from "../../../types/AlbumTypes";
+import { getAccessTokenData } from "../../api/token";
 
 const Playlists: React.FC = () => {
   const accessToken:string = useRecoilValue(accessTokenState);
@@ -28,7 +29,8 @@ const Playlists: React.FC = () => {
   );
 
   useEffect(() => {
-    if (!playlistsData || playlistsLoadable.state !== "hasValue") {
+    if (!playlistsData || playlistsLoadable.state !== "hasValue" || accessToken) {
+      getAccessTokenData();
       playlistsLoadable;
     }
   }, [playlistsData]);
