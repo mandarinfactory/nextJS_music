@@ -14,6 +14,7 @@ import {
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
+  accessTokenState,
 } from "../../../recoil/atom";
 import { searchDetailTrackState } from "../../../recoil/selector/searchSelectors";
 import {
@@ -22,6 +23,7 @@ import {
 } from "../../../types/AlbumTypes";
 
 const DetailAlbumTracks: React.FC = () => {
+  const accessToken = useRecoilValue(accessTokenState)
   const isClicked = useRecoilValue(isClickedState);
   const albumData = useRecoilValue(detailTrackState) as AlbumDataType;
   const detailAlbumTrackLoadable = useRecoilValueLoadable(
@@ -29,7 +31,7 @@ const DetailAlbumTracks: React.FC = () => {
   );
   const detailAlbumTrackData = (
     detailAlbumTrackLoadable.state === "hasValue" &&
-    detailAlbumTrackLoadable.contents
+    detailAlbumTrackLoadable.contents && accessToken
       ? detailAlbumTrackLoadable.contents
       : undefined
   ) as DetailAlbumTrackDataType;

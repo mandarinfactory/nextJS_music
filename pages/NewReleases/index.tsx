@@ -3,18 +3,19 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState, useRecoilValue } from "recoil";
 
 import Sidebar from "../components/Sidebar";
-import { detailTrackState, isClickedState } from "../../recoil/atom";
+import { accessTokenState, detailTrackState, isClickedState } from "../../recoil/atom";
 import { searchBrowseState } from "../../recoil/selector/searchSelectors";
 import { NewReleasesDataType } from "../../types/AlbumTypes";
 
 const NewReleases = () => {
   const router = useRouter();
+  const accessToken = useRecoilValue(accessTokenState);
   const newReleasesLoadable = useRecoilValueLoadable(searchBrowseState(25));
   const newReleasesData = (
-    newReleasesLoadable.state === "hasValue" && newReleasesLoadable.contents
+    newReleasesLoadable.state === "hasValue" && newReleasesLoadable.contents && accessToken
       ? newReleasesLoadable.contents
       : undefined
   ) as NewReleasesDataType;

@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import {
+  accessTokenState,
   authenticationTokenState,
   confirmedURIState,
   detailClickedPlaylistsInfoState,
@@ -16,6 +17,7 @@ import { detailTrackHandlerState } from "../../../recoil/selector/selectors";
 import { ClickedDetailInfos, DetailTrackDataType } from "../../../types/AlbumTypes";
 
 const DetailPlaylists: React.FC = () => {
+  const accessToken = useRecoilValue(accessTokenState);
   const isClicked = useRecoilValue(isClickedState);
   const selectedVal = useRecoilValue(selectedMusicValState);
   const clickedDetailInfos = useRecoilValue(
@@ -23,7 +25,7 @@ const DetailPlaylists: React.FC = () => {
   ) as ClickedDetailInfos;
   const detailTrackLoadable = useRecoilValueLoadable(detailTrackHandlerState(selectedVal || ""))
   const detailTracksData = (
-    detailTrackLoadable.state === "hasValue" && detailTrackLoadable.contents
+    detailTrackLoadable.state === "hasValue" && detailTrackLoadable.contents && accessToken
       ? detailTrackLoadable.contents
       : undefined
   ) as DetailTrackDataType;

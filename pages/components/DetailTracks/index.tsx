@@ -18,10 +18,12 @@ import {
   isClickedState,
   confirmedURIState,
   authenticationTokenState,
+  accessTokenState,
 } from "../../../recoil/atom";
 import { DetailInfosDataType } from "../../../types/AlbumTypes";
 
 const DetailTracks: React.FC = () => {
+  const accessToken = useRecoilValue(accessTokenState);
   const isDetailClicked = useRecoilValue(isClickedState);
   const detailInfosData = useRecoilValue(
     detailClickedInfosState
@@ -31,7 +33,7 @@ const DetailTracks: React.FC = () => {
     searchSongFinderState(artistData)
   );
   const detailSongsData =
-    detailSongsLoadable.state === "hasValue" && detailSongsLoadable.contents
+    detailSongsLoadable.state === "hasValue" && detailSongsLoadable.contents && accessToken
       ? detailSongsLoadable.contents
       : undefined;
 

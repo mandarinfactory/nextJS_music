@@ -7,6 +7,7 @@ import {
 } from "recoil";
 
 import {
+  accessTokenState,
   authenticationTokenState,
   confirmedURIState,
   musicValState,
@@ -15,12 +16,13 @@ import { searchSongFinderState } from "../../../recoil/selector/searchSelectors"
 import { SongDataType } from "../../../types/AlbumTypes";
 
 const Songs: React.FC = () => {
+  const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
   const songDataLoadable = useRecoilValueLoadable(
     searchSongFinderState(musicVal)
   );
   const songData = (
-    songDataLoadable.state === "hasValue" && songDataLoadable.contents
+    songDataLoadable.state === "hasValue" && songDataLoadable.contents && accessToken
       ? songDataLoadable.contents
       : undefined
   ) as SongDataType;

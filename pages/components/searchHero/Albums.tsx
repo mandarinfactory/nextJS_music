@@ -8,6 +8,7 @@ import {
 } from "recoil";
 
 import {
+  accessTokenState,
   detailTrackState,
   isClickedState,
   musicValState,
@@ -19,15 +20,19 @@ import Link from "next/link";
 import { AlbumDataType } from "../../../types/AlbumTypes";
 
 const Albums = () => {
+  const accessToken = useRecoilValue(accessTokenState);
   const musicVal = useRecoilValue(musicValState);
   const albumDataLoadable = useRecoilValueLoadable(
     searchAlbumFinderState(musicVal)
   );
   const albumData = (
-    albumDataLoadable.state === "hasValue" && albumDataLoadable.contents
+    albumDataLoadable.state === "hasValue" &&
+    albumDataLoadable.contents &&
+    accessToken
       ? albumDataLoadable.contents
       : undefined
   ) as AlbumDataType[];
+
   const setIsClicked = useSetRecoilState(isClickedState);
   const setClickedAlbum = useSetRecoilState(detailTrackState);
   const CHEVRONWIDTH = 50;
@@ -62,58 +67,62 @@ const Albums = () => {
 
   useEffect(() => {
     if (!albumData || albumDataLoadable.state !== "hasValue") {
-      albumDataLoadable
+      albumDataLoadable;
     }
-  },[albumData])
+  }, [albumData]);
 
   return (
     <>
       <h1 className="w-full h-auto text-3xl sm:text-center">앨범</h1>
-      <div className="flex my-3">
-        <div className="lg:max-w-6xl md:max-w-2xl sm:max-w-sm">
-          <ItemsCarousel
-            chevronWidth={CHEVRONWIDTH}
-            gutter={gutter}
-            numberOfCards={numOfCards}
-            outsideChevron
-            activeItemIndex={activeItemIndex}
-            requestToChangeActive={setActiveItemIndex}
-            leftChevron={<LeftChevron />}
-            rightChevron={<RightChevron />}
-          >
-            {albumData
-              ? albumData?.map((v, i: number) => (
-                  <Link
-                    href="components/DetailAlbumTracks"
-                    className="flex flex-wrap cursor-pointer"
-                    key={i}
-                    onClick={() => {
-                      setIsClicked(true);
-                      setClickedAlbum(v);
-                    }}
-                  >
-                    <Image
-                      src={`${v.images[1].url}`}
-                      width={500}
-                      height={500}
-                      alt="앨범아트"
-                      className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
-                    />
-                    <div className="my-2 flex flex-col">
-                      <h1 className="lg:text-lg md:text-base sm:text-sm">
-                        {v.artists[0].name}
-                      </h1>
-                      <h1 className="lg:text-lg md:text-base sm:text-sm overflow-hidden">
-                        {v.name}
-                      </h1>
-                      <p>{v.release_date}</p>
-                    </div>
-                  </Link>
-                ))
-              : albumData}
-          </ItemsCarousel>
+      {albumData?.length ? (
+        <div className="flex my-3">
+          <div className="lg:max-w-6xl md:max-w-2xl sm:max-w-sm">
+            <ItemsCarousel
+              chevronWidth={CHEVRONWIDTH}
+              gutter={gutter}
+              numberOfCards={numOfCards}
+              outsideChevron
+              activeItemIndex={activeItemIndex}
+              requestToChangeActive={setActiveItemIndex}
+              leftChevron={<LeftChevron />}
+              rightChevron={<RightChevron />}
+            >
+              {albumData
+                ? albumData?.map((v, i: number) => (
+                    <Link
+                      href="components/DetailAlbumTracks"
+                      className="flex flex-wrap cursor-pointer"
+                      key={i}
+                      onClick={() => {
+                        setIsClicked(true);
+                        setClickedAlbum(v);
+                      }}
+                    >
+                      <Image
+                        src={`${v.images[1].url}`}
+                        width={500}
+                        height={500}
+                        alt="앨범아트"
+                        className="w-[240px] rounded-lg hover:scale-95 duration-300 shadow-xl"
+                      />
+                      <div className="my-2 flex flex-col">
+                        <h1 className="lg:text-lg md:text-base sm:text-sm">
+                          {v.artists[0].name}
+                        </h1>
+                        <h1 className="lg:text-lg md:text-base sm:text-sm overflow-hidden">
+                          {v.name}
+                        </h1>
+                        <p>{v.release_date}</p>
+                      </div>
+                    </Link>
+                  ))
+                : albumData}
+            </ItemsCarousel>
+          </div>
         </div>
-      </div>
+      ) : (
+        albumData
+      )}
     </>
   );
 };

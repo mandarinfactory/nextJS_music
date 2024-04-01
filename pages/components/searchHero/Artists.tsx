@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import {
+  accessTokenState,
   detailClickedInfosState,
   isClickedState,
   musicValState,
@@ -12,13 +13,14 @@ import { ArtistsDataType } from "../../../types/AlbumTypes";
 import { searchArtistFinderState } from "../../../recoil/selector/searchSelectors";
 
 const Artists: React.FC = () => {
+  const accessToken = useRecoilValue(accessTokenState);
   const setIsClicked = useSetRecoilState(isClickedState);
   const setDetailInfos = useSetRecoilState(detailClickedInfosState);
   const musicVal = useRecoilValue(musicValState);
   const artistDataLoadable = useRecoilValueLoadable(searchArtistFinderState(musicVal));
 
   const artistData = (
-    artistDataLoadable.state === "hasValue" && artistDataLoadable.contents
+    artistDataLoadable.state === "hasValue" && artistDataLoadable.contents && accessToken
       ? artistDataLoadable.contents
       : undefined
   ) as ArtistsDataType;
