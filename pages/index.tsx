@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
@@ -11,10 +11,9 @@ import { getAccessTokenData } from "./api/token";
 import { REDIRECT_URL, SCOPE } from "../utils/constants";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const setAccessToken = useSetRecoilState(accessTokenState);
 
   useEffect(() => {
-    const getSaveAccessToken = localStorage.getItem("accessToken");
     const filteredAccessToken = async () => {
       try {
         const data = await getAccessTokenData();
