@@ -1,24 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import { searchBrowseState } from "../../../recoil/selector/searchSelectors";
 import {
   isClickedState,
   selectedMusicValState,
   detailClickedPlaylistsInfoState,
-  accessTokenState,
 } from "../../../recoil/atom";
 import { PlaylistsDataType } from "../../../types/AlbumTypes";
-import { getAccessTokenData } from "../../api/token";
 
 const Playlists: React.FC = () => {
-  const accessToken:string = useRecoilValue(accessTokenState);
-  
   const playlistsLoadable = useRecoilValueLoadable(searchBrowseState(10));
   const playlistsData = (
-    playlistsLoadable.state === "hasValue" && playlistsLoadable.contents && accessToken
+    playlistsLoadable.state === "hasValue" && playlistsLoadable.contents
       ? playlistsLoadable.contents
       : playlistsLoadable
   ) as PlaylistsDataType;
@@ -27,13 +23,6 @@ const Playlists: React.FC = () => {
   const setClickedDetailInfos = useSetRecoilState(
     detailClickedPlaylistsInfoState
   );
-
-  useEffect(() => {
-    if (!playlistsData || playlistsLoadable.state !== "hasValue" || accessToken) {
-      getAccessTokenData();
-      playlistsLoadable;
-    }
-  }, [playlistsData]);
 
   return (
     <>

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
-import { SetterOrUpdater, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
@@ -11,7 +11,7 @@ import { getAccessTokenData } from "./api/token";
 import { REDIRECT_URL, SCOPE } from "../utils/constants";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
-  const setAccessToken:SetterOrUpdater<string> = useSetRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   useEffect(() => {
     const getSaveAccessToken = localStorage.getItem("accessToken");
@@ -19,17 +19,15 @@ const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
       try {
         const data = await getAccessTokenData();
         localStorage.setItem("accessToken", data.data.access_token);
+        setAccessToken(localStorage.getItem("accessToken"));
+        
       } catch (error) {
         console.error("데이터 에러:", error);
       }
     };
 
     filteredAccessToken();
-
-    if (getSaveAccessToken) {
-      setAccessToken(getSaveAccessToken);
-    }
-  }, [setAccessToken]);
+  }, []);
   
   return (
     <Sidebar spotifyAuthUrl={spotifyAuthUrl}>

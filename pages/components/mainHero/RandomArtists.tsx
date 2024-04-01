@@ -1,34 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRecoilValueLoadable, useSetRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 import { ArtistsDataType } from "../../../types/AlbumTypes";
 import { randomArtistsHandler } from "../../../recoil/selector/selectors";
-import { isClickedState, detailClickedInfosState, accessTokenState } from "../../../recoil/atom";
-import { getAccessTokenData } from "../../api/token";
+import { isClickedState, detailClickedInfosState } from "../../../recoil/atom";
 
 const RandomArtists: React.FC = () => {
-  const accessToken:string = useRecoilValue(accessTokenState);
-  
   const randomArtistsLoadable = useRecoilValueLoadable(
     randomArtistsHandler("")
     );
     const randomArtistsData = (
-      randomArtistsLoadable.state === "hasValue" && randomArtistsLoadable.contents && accessToken
+      randomArtistsLoadable.state === "hasValue" && randomArtistsLoadable.contents
       ? randomArtistsLoadable.contents
       : randomArtistsLoadable
       ) as ArtistsDataType;
       const setIsClicked = useSetRecoilState(isClickedState);
       const setDetailInfos = useSetRecoilState(detailClickedInfosState);
-  
-  
-  useEffect(() => {
-    if (!randomArtistsData || randomArtistsLoadable.state !== "hasValue" || accessToken) {
-      getAccessTokenData();
-      randomArtistsLoadable;
-    }
-  }, [randomArtistsData]);
 
   return (
     <>
