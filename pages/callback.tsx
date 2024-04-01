@@ -7,12 +7,12 @@ import Sidebar from "./components/Sidebar";
 import { RecoilRootBox } from "../utils/RecoilRootBox";
 import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URL } from "../utils/constants";
 
-const Callback = ({ accessToken }: { accessToken: string }) => {
+const Callback = ({ authToken }: { authToken: string }) => {
   useEffect(() => {
-    if (accessToken) {
-      localStorage.setItem("authToken", accessToken);
+    if (authToken) {
+      localStorage.setItem("authToken", authToken);
     }
-  }, [accessToken]);
+  }, [authToken]);
 
   return (
     <RecoilRootBox>
@@ -52,11 +52,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           },
         }
         );
-        const accessToken = response.data.access_token;
-        return { props: { accessToken } };
+        const authToken = response.data.access_token;
+        return { props: { authToken } };
   } catch (error) {
     console.error("Error:", error);
-    return { props: { accessToken: "" } };
+    return { props: { authToken: "" } };
   }
 };
 

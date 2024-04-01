@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
@@ -18,17 +18,13 @@ const Playlists: React.FC = () => {
       ? playlistsLoadable.contents
       : playlistsLoadable
   ) as PlaylistsDataType;
+  console.log(playlistsLoadable);
+  
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
   const setClickedDetailInfos = useSetRecoilState(
     detailClickedPlaylistsInfoState
   );
-
-  useEffect(() => {
-    if (!playlistsData || playlistsLoadable.state !== "hasValue") {
-      playlistsLoadable;
-    }
-  }, [playlistsData]);
 
   return (
     <>

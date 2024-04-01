@@ -1,32 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { GetServerSideProps } from "next";
-import { useSetRecoilState } from "recoil";
 
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
-import { accessTokenState } from "../recoil/atom";
-import { getAccessTokenData } from "./api/token";
 import { REDIRECT_URL, SCOPE } from "../utils/constants";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
-  const setAccessToken = useSetRecoilState(accessTokenState);
-
-  useEffect(() => {
-    const filteredAccessToken = async () => {
-      try {
-        const data = await getAccessTokenData();
-        localStorage.setItem("accessToken", data.data.access_token);
-        setAccessToken(localStorage.getItem("accessToken"));
-        
-      } catch (error) {
-        console.error("데이터 에러:", error);
-      }
-    };
-
-    filteredAccessToken();
-  }, []);
+  
   
   return (
     <Sidebar spotifyAuthUrl={spotifyAuthUrl}>
