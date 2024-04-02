@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next";
 import Hero from "./components/Hero";
 import Sidebar from "./components/Sidebar";
 import { REDIRECT_URL, SCOPE } from "../utils/constants";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
   
@@ -13,6 +14,7 @@ const Home = ({ spotifyAuthUrl }: { spotifyAuthUrl: string }) => {
   return (
     <Sidebar spotifyAuthUrl={spotifyAuthUrl}>
       <Hero />
+      <SpeedInsights />
     </Sidebar>
   );
 };
