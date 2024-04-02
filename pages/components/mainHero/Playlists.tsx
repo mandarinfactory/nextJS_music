@@ -18,7 +18,6 @@ const Playlists: React.FC = () => {
       ? playlistsLoadable.contents
       : playlistsLoadable
   ) as PlaylistsDataType;
-  console.log(playlistsLoadable);
   
   const setIsClicked = useSetRecoilState(isClickedState);
   const setSelectedVal = useSetRecoilState(selectedMusicValState);
