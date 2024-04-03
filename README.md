@@ -24,7 +24,7 @@ next-js-music-peach.vercel.app
 - 최신앨범 섹션을 따로 만들어서 최신앨범의 data를 받아 구현했습니다.
 - 각각 해당 사진들을 클릭하면 해당 정보들과 관련된 정보, 노래들이 나오게 구현했습니다.
 
-### 음악 검색 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81-%EA%B2%80%EC%83%89)">위키</a>
+### 음악 검색 구현 - <a href="https://github.com/mandarinfactory/nextJS_music/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EC%9D%8C%EC%95%85-%EA%B2%80%EC%83%89-%EA%B5%AC%ED%98%84)">위키</a>
 - 노래 또는 가수 검색시 관련 아티스트, 노래, 앨범이 결과로 나오게 구현했습니다.
 - 마찬가지로 클릭시 아티스트, 앨범은 자세한 정보 및 노래들이 나오게 구현했고, 노래는 바로 재생되게끔 구현했습니다(재생은 Spotify 프리미엄 유저만 가능합니다.).
 
