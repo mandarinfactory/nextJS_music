@@ -19,14 +19,15 @@ next-js-music-peach.vercel.app
 - spotify web API(https://developer.spotify.com/documentation/web-api)
 
 ## 📌주요 기능
-### 실제 Youtube의 동영상 data를 가져와서 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81data%EA%B5%AC%ED%98%84)">위키</a>
-- 실제 Youtube처럼 검색, 사이드바를 만들었고 각각의 키워드에 따라 클릭시 검색결과가 나오게 구현했습니다.
-- 각각 해당 썸네일을 클릭하면 해당 동영상이 자동재생 및 정보 그리고 관련된 동영상 추천이 나오게 구현했습니다.
+### 실제 Spotify data를 가져와 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81data%EA%B5%AC%ED%98%84)">위키</a>
+- 첫 페이지에서 Spotify의 플레이리스트, 무작위의 아티스트를 추천해주는 화면을 구현했습니다.
+- 최신앨범 섹션을 따로 만들어서 최신앨범의 data를 받아 구현했습니다.
+- 각각 해당 사진들을 클릭하면 해당 정보들과 관련된 정보, 노래들이 나오게 구현했습니다.
 
-### 동영상 검색칸 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81-%EA%B2%80%EC%83%89)">위키</a>
-- 동영상 키워드 검색 후 엔터키를 누르면 검색결과가 나오게 했습니다.
-- 마찬가지로 검색결과를 누르면 동영상 재생 및 동영상 관련 정보 그리고 관련된 동영상 추천까지 나오게 구현했습니다.
+### 음악 검색 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81-%EA%B2%80%EC%83%89)">위키</a>
+- 노래 또는 가수 검색시 관련 아티스트, 노래, 앨범이 결과로 나오게 구현했습니다.
+- 마찬가지로 클릭시 아티스트, 앨범은 자세한 정보 및 노래들이 나오게 구현했고, 노래는 바로 재생되게끔 구현했습니다(재생은 Spotify 프리미엄 유저만 가능합니다.).
 
-### 음성검색 및 다크모드 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EC%9D%8C%EC%84%B1%EA%B2%80%EC%83%89,-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C)">위키</a>
-- web speech API를 이용해 음성검색을 구현했습니다.
-- 다크모드는 따로 useDarkmode라는 커스텀hook을 만들어서 구현했습니다.
+### 음악 재생 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EC%9D%8C%EC%84%B1%EA%B2%80%EC%83%89,-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C)">위키</a>
+- Spotify Web API에서 따로 token을 받아 로그인시에 해당 token이 localStorage에 저장되게해 계속 로그인을 유지하게 하면서 재생하도록 구현했습니다.
+- 로그아웃 시 localStorage에서 삭제하도록 구현했습니다.
