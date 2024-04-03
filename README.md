@@ -31,3 +31,4 @@ next-js-music-peach.vercel.app
 ### 음악 재생 구현 - <a href="https://github.com/mandarinfactory/nextJS_music/wiki/%EC%A3%BC%EC%9A%94%EA%B2%80%EC%83%89(%EC%9D%8C%EC%95%85-%EC%9E%AC%EC%83%9D-%EA%B5%AC%ED%98%84)">위키</a>
 - Spotify Web API에서 따로 token을 받아 로그인시에 해당 token이 localStorage에 저장되게해 계속 로그인을 유지하게 하면서 재생하도록 구현했습니다.
 - 로그아웃 시 localStorage에서 삭제하도록 구현했습니다.
+※ 음악재생은 Spotify 프리미엄 계정이여야 사용 가능합니다.
