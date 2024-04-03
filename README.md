@@ -19,7 +19,7 @@ next-js-music-peach.vercel.app
 - spotify web API(https://developer.spotify.com/documentation/web-api)
 
 ## 📌주요 기능
-### 실제 Spotify data를 가져와 구현 - <a href="https://github.com/mandarinfactory/react_videoTube/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%8F%99%EC%98%81%EC%83%81data%EA%B5%AC%ED%98%84)">위키</a>
+### 실제 Spotify data를 가져와 구현 - <a href="https://github.com/mandarinfactory/nextJS_music/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EC%8B%A4%EC%A0%9C-Spotify-data%EB%A5%BC-%EA%B0%80%EC%A0%B8%EC%99%80-%EA%B5%AC%ED%98%84)">위키</a>
 - 첫 페이지에서 Spotify의 플레이리스트, 무작위의 아티스트를 추천해주는 화면을 구현했습니다.
 - 최신앨범 섹션을 따로 만들어서 최신앨범의 data를 받아 구현했습니다.
 - 각각 해당 사진들을 클릭하면 해당 정보들과 관련된 정보, 노래들이 나오게 구현했습니다.
